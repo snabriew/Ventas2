@@ -29,9 +29,7 @@ class ProveedoresController extends Controller
         DB::table('proveedor')->insert([
             'nombre' => $request->nombre,
             'mail' => $request->mail,
-            'direccion' => $request->direccion,
-            'created_at' => now(),
-            'updated_at' => now(),
+            'direccion' => $request->direccion
         ]);
 
         return redirect()->route('proveedores.index')
@@ -57,8 +55,7 @@ class ProveedoresController extends Controller
             ->update([
                 'nombre' => $request->nombre,
                 'mail' => $request->mail,
-                'direccion' => $request->direccion,
-                'updated_at' => now(),
+                'direccion' => $request->direccion
             ]);
 
         return redirect()->route('proveedores.index')

@@ -26,8 +26,6 @@ class MarcasController extends Controller
 
         DB::table('marca')->insert([
             'nombre' => $request->nombre,
-            'created_at' => now(),
-            'updated_at' => now(),
         ]);
 
         return redirect()->route('marcas.index')
@@ -49,8 +47,7 @@ class MarcasController extends Controller
         DB::table('marca')
             ->where('id_marca', $id)
             ->update([
-                'nombre' => $request->nombre,
-                'updated_at' => now(),
+                'nombre' => $request->nombre
             ]);
 
         return redirect()->route('marcas.index')

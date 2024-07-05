@@ -54,9 +54,9 @@ class ClientesController extends Controller
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
             'direccion' => 'required|string|max:255',
-            'dni' => 'required|string|max:10',
-            'cuit' => 'required|string|max:13',
-            'telefono' => 'required|string|max:15',
+            'dni' => 'required|string|max:20',
+            'cuit' => 'required|string|max:20',
+            'telefono' => 'required|string|max:20',
         ]);
 
         DB::table('cliente')

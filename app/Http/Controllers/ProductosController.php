@@ -9,7 +9,12 @@ class ProductosController extends Controller
 {
     public function index()
     {
-        $productos = DB::table('producto')->get();
+        $productos = DB::table('producto')
+            ->join('proveedor', 'producto.id_proveedor', '=', 'proveedor.id_proveedor')
+            ->join('marca', 'producto.id_marca', '=', 'marca.id_marca')
+            ->select('producto.*', 'proveedor.nombre as proveedor_nombre', 'marca.nombre as marca_nombre')
+            ->get();
+
         return view('productos.index', compact('productos'));
     }
 
@@ -36,8 +41,6 @@ class ProductosController extends Controller
             'cantidad' => $request->cantidad,
             'id_proveedor' => $request->id_proveedor,
             'id_marca' => $request->id_marca,
-            'created_at' => now(),
-            'updated_at' => now(),
         ]);
 
         return redirect()->route('productos.index')
@@ -69,8 +72,7 @@ class ProductosController extends Controller
                 'descripcion' => $request->descripcion,
                 'cantidad' => $request->cantidad,
                 'id_proveedor' => $request->id_proveedor,
-                'id_marca' => $request->id_marca,
-                'updated_at' => now(),
+                'id_marca' => $request->id_marca
             ]);
 
         return redirect()->route('productos.index')
@@ -84,3 +86,4 @@ class ProductosController extends Controller
             ->with('success', 'Producto eliminado correctamente.');
     }
 }
+

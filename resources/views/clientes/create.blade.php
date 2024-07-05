@@ -41,6 +41,6 @@
             <label for="telefono">Teléfono</label>
             <input type="text" class="form-control" id="telefono" name="telefono" value="{{ old('telefono') }}" required>
         </div>
-        <button type="submit" class="btn btn-primary m-1">Agregar</button>
+        <button type="submit" class="btn btn-primary mt-3">Agregar</button>
     </form>
 @endsection
